@@ -1,5 +1,7 @@
+// Upfront, no where near working and not even close to figuring how to do so either. 
+
 // Test data
-var pokemons = pokemonType ("filename");
+// var pokemons = pokemonType ("filename");
 // pokemon.txt
 // charzard
 // pikachu
