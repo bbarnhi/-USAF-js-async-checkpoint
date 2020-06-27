@@ -1,0 +1,74 @@
+// Test data
+var pokemons = pokemonType ("filename");
+// pokemon.txt
+// charzard
+// pikachu
+
+
+
+function pokemonType (pokemonList){
+  //opens file, converts all information to string, splits on newline
+  var input = fs.readFileSync(filename).toString().split("\n");
+  // Create an array to hold the objects
+  var arrayOfPokemon = []
+  // Enrich each line of data with additional values
+  // convert name into an object so it can have elements
+  
+  //run enrichment once for each pokemon
+  for (i=0; i < input.length; i++) {
+    // create object, name of current pokemon, types per pokeape.co API
+    // Do a Fetch to https://pokeapi.co/api/v2/pokemon/[[insertname]]
+    // Find the section "types" -  Add to a count (pokemon can have multiple types)
+    // Grab the value of type -- "types":[{"type"{"name": VALUE}}] 
+    // Push that value(s) into pokemonEnrich object 
+    // use fetch to populate typeArray
+    
+    // USE FETCH TO PULL DATA
+    const typeArray = fetch('https://pokeapi.co/api/v2/pokemon/'+input[i])
+    .then  responce
+    .then JSON
+    for loop
+    body json.stringify({type:}) //types from API
+  };
+    // USE DATA FROM FETCH TO BUILD POKEMON OBJECT
+    const pokemonEnrich = Object.assign({}, input[i], { type: typeArray })
+  }
+  //Add newly enriched pokemon object on to the list 
+  arrayOfPokemon.push(pokemonEnrich);
+return arrayOfPokemon;
+}
+
+console.log(pokemons)
+// In Theory should produce the following
+// Charizard type: flying, fire
+
+
+// Example API
+// https://pokeapi.co/api/v2/pokemon/charizard
+// ** returns 12772 lines of information on the pokemon
+// Search through JSON to validate the right name
+//   "forms": [
+//     {
+//       "name": "charizard",
+//       "url": "https://pokeapi.co/api/v2/pokemon-form/6/"
+//     }
+//   ]
+// Search through JSON to find Types
+//   "types": [
+//     {
+//       "slot": 1,
+//       "type": {
+//         "name": "fire",
+//         "url": "https://pokeapi.co/api/v2/type/10/"
+//       }
+//     },
+//     {
+//       "slot": 2,
+//       "type": {
+//         "name": "flying",
+//         "url": "https://pokeapi.co/api/v2/type/3/"
+//       }
+//     }
+//   ]
+// 
+// More Detail -- https://pokeapi.co/docs/v2#pokemon
